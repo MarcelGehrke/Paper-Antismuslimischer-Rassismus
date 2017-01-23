@@ -1,11 +1,11 @@
-﻿* Encoding: UTF-8.
+** Encoding: UTF-8.
 
 *** Zu Beginn manuelle Entfernung der '0' als fehlender Wert bei den vier Kontaktvariablen (v79-v82) sowie bei v189, der Religionszugehörigkeit.***
 ***Hierzu ist keine Möglichkeit bekannt dies über die Syntax zu erledigen ***
 
 *************************************************
 *************************************************
-**********Aufbereitung der Variablen **********
+**********Aufbereitung der Variablen ************
 *************************************************
 *************************************************
 
@@ -20,10 +20,10 @@ AUTORITARISMUS
 ***********************
 *** Berechnunung u. Bennenung der Skala für Autoritarismus ***
 
-COMPUTE Autori_Skala= MEAN.1(Au1,Au2).
+COMPUTE Autori_Index = MEAN.1(AU1,AU2).
 EXECUTE.
 
-VARIABLE LABELS Autori_Skala 'Autoritarismus'.
+VARIABLE LABELS Autori_Index 'Autoritarismus'.
 EXECUTE. 
 
 
