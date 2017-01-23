@@ -1,6 +1,6 @@
 ###################################################################
-######## Duisburger Beiträge zur soziologischen Forschung #########
-######## "Antimuslimischer Rassismus ein neues Phänomen?" #########
+######## Duisburger BeitrÃ¤ge zur soziologischen Forschung #########
+######## "Antimuslimischer Rassismus ein neues PhÃ¤nomen?" #########
 ###################################################################
 
 
@@ -8,7 +8,7 @@
 #Vorbeitung#
 ############
 
-#installieren und laden der benötigten r-packages#
+#installieren und laden der benÃ¶tigten r-packages#
 install.packages("foreign",dependencies=T)
 install.packages("car",dependencies=T)
 install.packages("effects",dependencies=T)
@@ -19,7 +19,7 @@ install.packages("semPlot",dependencies=T)
 install.packages("QuantPsyc",dependencies=T)
 install.packages("boot",dependencies=T)
 install.packages("pastecs",dependencies=T)
-install.packages("psych")
+install.packages("psych",dependencies=T)
 
 library(foreign)
 library(car)
@@ -34,7 +34,7 @@ library(pastecs)
 library(psych)
 
 #laden des in SPSS aufbereiteten ALLBUS 2012 Datensatzes
-allbus_mod<-read.spss("C:/Users/gehrk/Desktop/Uni/Beiträge_aktuell/ZA4614_v1-1-1.sav", to.data.frame=T,max.value.labels=T)
+allbus_mod<-read.spss("C:/Users/gehrk/Desktop/Uni/BeitrÃ¤ge_aktuell/ALLBUSaufbereitet.sav", to.data.frame=T,max.value.labels=T)
 
 
 ######################################################################################
@@ -45,14 +45,14 @@ colnames(allbus_mod)
 
 #Regressionen Rassismus#
 MRassismus<-lm(Rassismus_Index ~ Autori_Index + Anomie_Index + BefWirtschftlLage + Lebenszufriedenheit + LinksRechts 
-               + Ost + Land + Alter + Bildungsjahre + Kontakt_Index
-               ,data=allbus_mod)
+               + Ost + Land + Alter + Bildungsjahre + Kontakt_Index,
+               data=allbus_mod)
 summary(MRassismus)
 
 #Reressionen Antimuslimischer Rassismus#
 MAntiMus<-lm(AntiMus_Index ~ Autori_Index + Anomie_Index + BefWirtschaftlLage + Lebenszufriedenheit + LinksRechts 
-             + Ost + Land + Alter + Bildungsjahre + Kontakt_Index
-             ,data=allbus_mod)
+             + Ost + Land + Alter + Bildungsjahre + Kontakt_Index,
+             data=allbus_mod)
 summary(MAntiMus)
 
 lm.beta(MRassismus)
@@ -106,7 +106,7 @@ alpha(allbus_kontakt)
 
 SEMRassismus<-'Rassismus=~ R1 + R2 + R3 + R4
 Autori=~ AU1 + AU2
-Anom=~ an1 + an2 +an3 + an4
+Anom=~ an1 + an2 + an3 + an4
 Rassismus ~ Alter + Ost + Autori + Anom + Bildungsjahre + Kontakt_Index
 Autori ~ Alter + Bildungsjahre + Kontakt_Index + Anom 
 Anom ~ Ost + Bildungsjahre + Alter
@@ -116,7 +116,7 @@ fitRassismus<-sem(SEMRassismus,data=allbus_mod,mimic="EQS")
 
 SEMAntiMus<-'AntiMus=~ AR1 + AR2 + AR3 + AR4 + AR5
 Autori=~ AU1 + AU2
-Anom=~ an1 + an2 +an3 + an4
+Anom=~ an1 + an2 + an3 + an4
 AntiMus ~ Alter + Ost + Autori + Anom + Bildungsjahre + Kontakt_Index
 Autori ~ Alter + Bildungsjahre + Kontakt_Index + Anom 
 Anom ~ Ost + Bildungsjahre + Alter
